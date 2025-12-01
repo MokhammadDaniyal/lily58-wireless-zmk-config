@@ -1,0 +1,22 @@
+// config/lily58_right.overlay
+
+&i2c0 {
+    status = "okay";
+    // Define the SSD1306 device on the I2C bus
+    oled: ssd1306@3c { 
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>; // Common I2C address
+        width = <128>;
+        height = <32>;
+        display-offset = <0 0>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-timing;
+    };
+};
+
+// --- This part is crucial for the ZMK system ---
+&default_display {
+    status = "okay";
+    display = <&oled>;
+};
