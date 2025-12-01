@@ -18,9 +18,9 @@
 include:
   # 1. Right Half (Standard Build)
   - board: nice_nano_v2
-    shield: lily58_right ssd1306_128x32
+    shield: lily58_right nice_oled
 
   # 2. Left Half (Standard Build)
   # This should pass cleanly now.
   - board: nice_nano_v2
-    shield: lily58_left ssd1306_128x32
+    shield: lily58_left nice_oled
