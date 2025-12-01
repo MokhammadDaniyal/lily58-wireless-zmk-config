@@ -1,0 +1,23 @@
+// lily58_left.overlay
+
+&i2c0 {
+    status = "okay";
+    // Define the SSD1306 device on the I2C bus
+    oled: ssd1306@3c { 
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>; // Common I2C address for 128x32 OLED
+        width = <128>;
+        height = <32>;
+        display-offset = <0 0>;
+        // Assuming your OLED reset pin is not connected or handled
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-timing;
+    };
+};
+
+&default_display {
+    status = "okay";
+    // Link the default ZMK display alias to the OLED device defined above
+    display = <&oled>;
+};
