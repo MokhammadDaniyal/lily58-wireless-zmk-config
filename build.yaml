@@ -12,9 +12,21 @@
 #     shield: reviung41
 #
 ---
+# This file generates the GitHub Actions matrix
+# ... (rest of the header comments)
+---
 include:
-  - board: nice_nano_v2
-    shield: lily58_left nice_oled
-    snippet: studio-rpc-usb-uart
+  # 1. Right Half (Standard Build)
   - board: nice_nano_v2
     shield: lily58_right nice_oled
+
+  # 2. Left Half (Standard Build)
+  # This should pass cleanly now.
+  - board: nice_nano_v2
+    shield: lily58_left nice_oled
+
+  # 3. Left Half (Snippet Build - for debugging/flashing only)
+  # This needs to be a separate build entry if the toolchain requires it.
+  - board: nice_nano_v2
+    shield: lily58_left nice_oled 
+    snippet: studio-rpc-usb-uart
