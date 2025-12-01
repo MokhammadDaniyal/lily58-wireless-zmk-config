@@ -1,11 +1,10 @@
-// config/lily58_right.overlay
-
+/* Start with the I2C bus definition first */
 &i2c0 {
     status = "okay";
-    // Define the SSD1306 device on the I2C bus
+
     oled: ssd1306@3c { 
         compatible = "solomon,ssd1306fb";
-        reg = <0x3c>; // Common I2C address
+        reg = <0x3c>;
         width = <128>;
         height = <32>;
         display-offset = <0 0>;
@@ -15,7 +14,13 @@
     };
 };
 
-// --- This part is crucial for the ZMK system ---
+/* Now reference the defined device in the display alias nodes */
+/ {
+    chosen {
+        zephyr,display = &oled;
+    };
+};
+
 &default_display {
     status = "okay";
     display = <&oled>;
